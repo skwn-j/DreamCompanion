@@ -4,9 +4,25 @@ from datetime import datetime
 
 def index(request):
     now = datetime.now()
-    html_content = "<html><head><title>Hello, Django</title></head></body>"
-    html_content += "<strong>Hello django!</strong> on " + now.strftime("%A, %d %B, %Y at %X")
-    html_content += "</body></html>"
+    
+    return render(
+        request,
+        "HelloDjangoApp/index.html",
+        {
+            'title': "Hello Django",
+            'message': "Hello Django!",
+            'content': " on " + now.strftime("%A, %d %B, %Y at %X")
+        }
+    )
 
-    return HttpResponse(html_content)
+def about(request):
+    return render(
+        request,
+        "HelloDjangoApp/about.html",
+        {
+            'title': "about HelloDjangoApp",
+            'content' : "Example app page for Django."
+            }
+        )
+    
 # Create your views here.
